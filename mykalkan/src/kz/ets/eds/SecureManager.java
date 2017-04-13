@@ -761,6 +761,7 @@ public class SecureManager {
 	        MAP_OF_LOAD_CRL_LABEL.put(crlName, TypeOfCrlLoaded.LOADING);
 	        String location = MAP_OF_CRL_PATH.get(crlName);
 	        try {
+	        	/*
 	            URL url = new URL(location);
 	            HttpURLConnection conn = null;
 	            if (useProxy) {
@@ -773,19 +774,21 @@ public class SecureManager {
 	            conn.setDoInput(true);
 	            conn.connect();
 	            if (conn.getResponseCode() == 200) {
+	            */
 	                CertificateFactory cf = CertificateFactory.getInstance("X.509", "KALKAN");
 	                InputStream inStream = new FileInputStream("resources/crl/gost.crl");
 	                //X509CRL crlObject = (X509CRL) cf.generateCRL(conn.getInputStream());
 	                X509CRL crlObject = (X509CRL) cf.generateCRL(inStream);
 	                MAP_OF_XCRL.put(crlName, crlObject);
-	            } else {
+	             
+	        /* }
+	           else {
 	                String msg = "Ошибка(1) получения CRL-файла : '" + location
 	                        + "' : " + conn.getResponseCode() + " ,  " + conn.getResponseMessage();
 	                log.warning(msg);
-	            }
+	            } */
 	        } catch (Exception e) {
-	            String msg = "Ошибка(1) получения CRL-файла : '" + location
-	                    + "' : " + e.getMessage();
+	            String msg = "Ошибка(1) получения CRL-файла : '"; //+ location + "' : " + e.getMessage();
 	            log.warning(msg);
 	        }
 	        //MAP_OF_LOAD_CRL_LABEL.put(crlName, oldState ) ;
