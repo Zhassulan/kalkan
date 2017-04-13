@@ -1,6 +1,7 @@
 package kz.ets.eds;
 
 import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -89,6 +90,7 @@ public class SecureManager {
 	    private static final String password = "WZcjCH6f";
 	    
 	    public String certinfo = null;
+	    public String BrokerCode = null;
 	    	    
 	    static { // #1
 	        try {
@@ -127,7 +129,7 @@ public class SecureManager {
 	        MAP_OF_CRL_PATH = new ConcurrentHashMap(); // путь для загрузки CRL-файлов , здесь в примере он захаркоден
 
 	        //MAP_OF_CRL_PATH.put(CRL_RSA_1, "http://crl.pki.gov.kz/rsa.crl");
-	        MAP_OF_CRL_PATH.put(CRL_RSA_1, "https://kc-ets.kz/crl/rsa.crl");
+	        MAP_OF_CRL_PATH.put(CRL_RSA_1, "https://localhost/crl/rsa.crl");
 	        MAP_OF_CRL_PATH.put(CRL_RSA_2, "https://kc-ets.kz/crl/rsa.crl");
 	        MAP_OF_CRL_PATH.put(CRL_GOST_1, "https://kc-ets.kz/crl/gost.crl");
 	        MAP_OF_CRL_PATH.put(CRL_GOST_2, "https://kc-ets.kz/crl/gost.crl");
@@ -164,6 +166,10 @@ public class SecureManager {
 	    public String getLastErrorMsg() {
 	        return verifyErrorMsg;
 	    }
+	    
+	    public void SetBrokerCode(String code){
+	    	this.BrokerCode = code;
+	    }
 
 
 	    public boolean isGoodSignature(String signedData, String signature) {
@@ -198,7 +204,6 @@ public class SecureManager {
 	        verifyErrorMsg = "Ошибка не определена";
 	        try {
 	            CMSSignedData cms = createCMSSignedData(sigantureToVerify, signedData);
-	            
 	            SignerInformationStore signers = cms.getSignerInfos();
 	            CertStore clientCerts = cms.getCertificatesAndCRLs("Collection", providerName);
 	            if (!reCheckClientSignature(signers, clientCerts)) {
@@ -358,11 +363,16 @@ public class SecureManager {
 	            while (certIt.hasNext()) {
 	                indexOfSigner++;
 	                X509Certificate cert = (X509Certificate) certIt.next();
-	                //System.out.println( "------ Сертификат внутри подписи: " + indexOfSigner+ " ----- ");
-	                //System.out.println( cert );
+	                //log.info("------ Сертификат внутри подписи: " + indexOfSigner+ " ----- ");
+	                //log.info(cert.toString());
 	                try {
+	                	//проверка сертификатом внутри подписи
 	                    cert.checkValidity();
 	                    overAllResult = (overAllResult) && (signer.verify(cert, providerName));
+	                    //проверка сертификатом из базы ранее присланного
+	                    //X509Certificate cert_db = GetCertFromBytes(GetCertFromDb(BrokerCode));
+	                    //cert_db.checkValidity();
+	                    //overAllResult = (overAllResult) && (signer.verify(cert_db, providerName));
 	                } catch (CertificateExpiredException ex) {
 	                    verifyErrorMsg = "Срок действия Сертификата которым подписали отчет прошел!";
 	                    Logger.getLogger(SecureManager.class.getName()).log(Level.SEVERE, "ORE SIGN2:", ex);
@@ -764,7 +774,9 @@ public class SecureManager {
 	            conn.connect();
 	            if (conn.getResponseCode() == 200) {
 	                CertificateFactory cf = CertificateFactory.getInstance("X.509", "KALKAN");
-	                X509CRL crlObject = (X509CRL) cf.generateCRL(conn.getInputStream());
+	                InputStream inStream = new FileInputStream("resources/crl/gost.crl");
+	                //X509CRL crlObject = (X509CRL) cf.generateCRL(conn.getInputStream());
+	                X509CRL crlObject = (X509CRL) cf.generateCRL(inStream);
 	                MAP_OF_XCRL.put(crlName, crlObject);
 	            } else {
 	                String msg = "Ошибка(1) получения CRL-файла : '" + location
@@ -791,6 +803,7 @@ public class SecureManager {
 	            int versionPkiSdk) {
 	        String crlName = findCurrentCrlName(typeOfRespondent, versionPkiSdk);
 	        if (isNeedLoadCrlObject(crlName)) {
+	        	//log.info(crlName);
 	            loadCrlObject(crlName);
 	        }
 	        Object result = MAP_OF_XCRL.get(crlName);
@@ -977,6 +990,31 @@ public class SecureManager {
 	    	   return b;   
 	    }
 	    
+	    public X509Certificate GetCertFromBytes(byte [] cert)	{
+	    	X509Certificate  myCert = null;
+			try {
+	            myCert = (X509Certificate)CertificateFactory.getInstance("X509").generateCertificate(new ByteArrayInputStream(cert));
+	            //log.info(myCert.toString());
+	            return myCert;
+	        	}	
+	        catch(Exception ex)
+	        	{
+	            ex.printStackTrace();
+	        	}
+			return myCert;
+		}
+	    
+	    public void ShowCertContent(byte [] cert)	{
+			 try {
+	                Certificate myCert = CertificateFactory.getInstance("X509").generateCertificate(new ByteArrayInputStream(cert));
+	                log.info(myCert.toString());
+	            	}	
+	            catch(Exception ex)
+	            	{
+	                ex.printStackTrace();
+	            	}
+		}
+	    
 	    public void DbSaveCertInfo(String login, String msg, String signature, String certinfo, boolean check_status)	{
 	    	Connection conn = null;
 	    	   Statement stmt = null;
@@ -1020,6 +1058,7 @@ public class SecureManager {
 	    
 	    private void SetCertInfo(X509Certificate userCert)	{
 	    	String info = null;
+	    	info = "--------------Certificate information-----------------";
 	    	info += userCert.getVersion() + "\n";
 	    	info += userCert.getSerialNumber().toString(16) + "\n";
 	    	info += userCert.getSubjectDN() + "\n";
@@ -1027,7 +1066,7 @@ public class SecureManager {
 	    	info += userCert.getNotBefore() + "\n";
 	    	info += userCert.getNotAfter() + "\n";
 	    	info += userCert.getSigAlgName() + "\n";
-	    	this.certinfo = info;
+	    	this.certinfo += info;
 	    }
 	        
 }
