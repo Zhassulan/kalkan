@@ -85,7 +85,7 @@ public class SecureManager {
 	    
 	    //private static final String url = "jdbc:mysql://localhost:3306/db_kc";
 	    private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-	    private static final String url = "jdbc:mysql://10.160.235.20:3306/db_kc";
+	    private static final String url = "jdbc:mysql://10.160.235.20:3306/db_kc?useUnicode=true&characterEncoding=UTF-8";
 	    private static final String user = "kc";
 	    private static final String password = "WZcjCH6f";
 	    
@@ -370,9 +370,9 @@ public class SecureManager {
 	                    cert.checkValidity();
 	                    overAllResult = (overAllResult) && (signer.verify(cert, providerName));
 	                    //проверка сертификатом из базы ранее присланного
-	                    //X509Certificate cert_db = GetCertFromBytes(GetCertFromDb(BrokerCode));
-	                    //cert_db.checkValidity();
-	                    //overAllResult = (overAllResult) && (signer.verify(cert_db, providerName));
+	                    X509Certificate cert_db = GetCertFromBytes(GetCertFromDb(BrokerCode));
+	                    cert_db.checkValidity();
+	                    overAllResult = (overAllResult) && (signer.verify(cert_db, providerName));
 	                } catch (CertificateExpiredException ex) {
 	                    verifyErrorMsg = "Срок действия Сертификата которым подписали отчет прошел!";
 	                    Logger.getLogger(SecureManager.class.getName()).log(Level.SEVERE, "ORE SIGN2:", ex);
@@ -754,6 +754,7 @@ public class SecureManager {
 	     * @param crlName
 	     */
 	    private void loadCrlObject(String crlName) {
+	    	//log.info("loadCrlObject");
 	        TypeOfCrlLoaded oldState = MAP_OF_LOAD_CRL_LABEL.get(crlName);
 	        if (TypeOfCrlLoaded.LOADING.equals(oldState)) {
 	            return;
@@ -776,7 +777,17 @@ public class SecureManager {
 	            if (conn.getResponseCode() == 200) {
 	            */
 	                CertificateFactory cf = CertificateFactory.getInstance("X.509", "KALKAN");
-	                InputStream inStream = new FileInputStream("resources/crl/gost.crl");
+	                //crlName = CRL_GOST_1
+	                
+	                String path = "/usr/java/egov/kalkan/gost.crl";
+	                String path1 = "./resources/crl/gost.crl";
+	                
+	                //System.err.println(SecureManager.class.getResourceAsStream("/resources/crl/gost.crl") != null); 
+	                //System.err.println(SecureManager.class.getClassLoader().getResourceAsStream("./resources/crl/gost.crl") != null); 
+	                
+	                InputStream inStream = new FileInputStream(path);
+	                //InputStream inStream = SecureManager.class.getResourceAsStream(path);
+	                //SecureManager.class.getResourceAsStream(path)
 	                //X509CRL crlObject = (X509CRL) cf.generateCRL(conn.getInputStream());
 	                X509CRL crlObject = (X509CRL) cf.generateCRL(inStream);
 	                MAP_OF_XCRL.put(crlName, crlObject);
@@ -804,6 +815,7 @@ public class SecureManager {
 	     */
 	    private X509CRL findCrlObject( //X509Certificate certForCheck, X509Certificate userCert,
 	            int versionPkiSdk) {
+	    	//log.info("findCrlObject");
 	        String crlName = findCurrentCrlName(typeOfRespondent, versionPkiSdk);
 	        if (isNeedLoadCrlObject(crlName)) {
 	        	//log.info(crlName);
@@ -1070,6 +1082,31 @@ public class SecureManager {
 	    	info += userCert.getNotAfter() + "\n";
 	    	info += userCert.getSigAlgName() + "\n";
 	    	this.certinfo += info;
+	    }
+	    
+	    public String GetMsgFromDb(String id)	{
+	       String data = null; 
+	       Connection conn = null;
+    	   Statement stmt = null;
+    	   try{
+    	      Class.forName("com.mysql.jdbc.Driver");
+    	      conn = DriverManager.getConnection(url, user, password);
+    	      stmt = conn.createStatement();
+    	      String sql;
+    	      sql = "SELECT msg from msg where id = " + id + ";";
+    	      ResultSet rs = stmt.executeQuery(sql);
+    	      while(rs.next())	{
+    	         data = rs.getString("msg");
+    	      	 }
+    	      rs.close();
+    	      stmt.close();
+    	      conn.close();
+    	   }
+    	   catch (Exception e)
+    	   {
+    		   log.info(e.getMessage().toString());
+    	   }
+    	   return data;
 	    }
 	        
 }
