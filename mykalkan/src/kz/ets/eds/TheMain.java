@@ -85,10 +85,8 @@ public class TheMain {
 				{
 				System.out.println(e.getMessage().toString());
 				}
-			 
 			
 			//PlainData = args[1];
-			//msg_id = args[1];
 			signedPlainData = args[2];
 			}
 		else

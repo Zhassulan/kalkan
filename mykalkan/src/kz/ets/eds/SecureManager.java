@@ -363,6 +363,7 @@ public class SecureManager {
 	            while (certIt.hasNext()) {
 	                indexOfSigner++;
 	                X509Certificate cert = (X509Certificate) certIt.next();
+	                SetCertInfo(cert);
 	                //log.info("------ Сертификат внутри подписи: " + indexOfSigner+ " ----- ");
 	                //log.info(cert.toString());
 	                try {
@@ -486,7 +487,7 @@ public class SecureManager {
 	            }
 	            while (certIt.hasNext()) {
 	                X509Certificate cert = (X509Certificate) certIt.next();
-	                SetCertInfo(cert);
+	                //SetCertInfo(cert);
 	                /*
 	                Расширение 2.5.29.32
 					Название: Политики применения
@@ -1107,6 +1108,12 @@ public class SecureManager {
     		   log.info(e.getMessage().toString());
     	   }
     	   return data;
+	    }
+	    
+	    public X509Certificate GetCertFromCMSString(String cms_data)	{
+	    	X509Certificate cert = null;
+	    	
+	    	return cert;
 	    }
 	        
 }
