@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="32d080a3-4a13-462a-b005-98ccd33c95da" name="Default Changelist" comment="" />
-    <ignored path="$PROJECT_DIR$/bin/" />
+    <list default="true" id="5dd7211f-dd61-458b-8d90-aa0ccec128d0" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,12 +9,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="$PROJECT_DIR$/../../../maven" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../maven" />
         <option name="userSettingsFile" value="D:\dev\maven\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
@@ -25,7 +24,6 @@
     <option name="width" value="640" />
     <option name="height" value="350" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -41,12 +39,12 @@
             <path>
               <item name="kc-ets" type="b2602c69:ProjectViewProjectNode" />
               <item name="kc-ets" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+              <item name="kc-ets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="kc-ets" type="b2602c69:ProjectViewProjectNode" />
               <item name="kc-ets" type="462c0819:PsiDirectoryNode" />
-              <item name=".settings" type="462c0819:PsiDirectoryNode" />
+              <item name="mykalkan" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -121,17 +119,17 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="32d080a3-4a13-462a-b005-98ccd33c95da" name="Default Changelist" comment="" />
-      <created>1552296355364</created>
+      <changelist id="5dd7211f-dd61-458b-8d90-aa0ccec128d0" name="Default Changelist" comment="" />
+      <created>1551781112793</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1552296355364</updated>
-      <workItem from="1552296358434" duration="10000" />
+      <updated>1551781112793</updated>
+      <workItem from="1551781114310" duration="29000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10000" />
+    <option name="totallyTimeSpent" value="29000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
