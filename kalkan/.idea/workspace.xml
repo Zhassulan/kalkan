@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a3dc362-6ae1-4d67-a47c-f173179808c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mykalkan/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mykalkan/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mykalkan/src/main/java/kz/ets/SecureManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mykalkan/src/main/java/kz/ets/SecureManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mykalkan/src/main/java/kz/ets/TheMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mykalkan/src/main/java/kz/ets/TheMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -316,12 +317,12 @@
       <option name="presentableId" value="Default" />
       <updated>1552300591368</updated>
       <workItem from="1552300594262" duration="6912000" />
-      <workItem from="1552358693596" duration="5214000" />
+      <workItem from="1552358693596" duration="5562000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12126000" />
+    <option name="totallyTimeSpent" value="12474000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
