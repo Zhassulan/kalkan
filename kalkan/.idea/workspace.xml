@@ -2,11 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a3dc362-6ae1-4d67-a47c-f173179808c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/ets/TheMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/ets/TheMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/app.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/kalkan.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/lib/commons-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/lib/commons-lang3-3.3.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/lib/hamcrest-core-1.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/lib/junit-4.11.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/lib/kalkan-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/lib/mysql-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/lib/xmldsig-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/lib/xmlsec-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -18,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/ets/TheMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="56" column="54" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
+            <state relative-caret-position="1482">
+              <caret line="178" column="31" selection-start-line="178" selection-start-column="31" selection-end-line="178" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -46,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/app.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="15" selection-start-line="15" selection-end-line="15" selection-end-column="22" />
+            <state relative-caret-position="460">
+              <caret line="20" column="23" lean-forward="true" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -72,6 +83,8 @@
       <find>createCMSSignedData</find>
       <find>isGoodSignature</find>
       <find>отч</find>
+      <find>TEST.PERSON_CERT</find>
+      <find>DEFAUL_CERT_NUC2_GOST_PATH</find>
     </findStrings>
     <replaceStrings>
       <replace>system</replace>
@@ -87,9 +100,9 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/kz/ets/PropsManager.java" />
         <option value="$PROJECT_DIR$/src/main/resources/log4j.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/ets/SecureManager.java" />
         <option value="$PROJECT_DIR$/src/main/resources/app.properties" />
         <option value="$PROJECT_DIR$/src/main/java/kz/ets/TheMain.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/ets/SecureManager.java" />
       </list>
     </option>
   </component>
@@ -231,11 +244,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\dev\prj\kc-ets\kalkan" />
       <recent name="D:\dev\prj\kc-ets\kalkan\src\main\resources\crl" />
       <recent name="D:\dev\prj\kc-ets\kalkan\src\main\resources\cert\rootca" />
       <recent name="D:\dev\prj\kc-ets\kalkan\src\main\resources\cert\nca" />
       <recent name="D:\dev\prj\kc-ets\kalkan\src\main\resources" />
-      <recent name="D:\dev\prj\kc-ets\kalkan\lib" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -317,12 +330,12 @@
       <option name="presentableId" value="Default" />
       <updated>1552300591368</updated>
       <workItem from="1552300594262" duration="6912000" />
-      <workItem from="1552358693596" duration="5562000" />
+      <workItem from="1552358693596" duration="6078000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12474000" />
+    <option name="totallyTimeSpent" value="12990000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -344,7 +357,7 @@
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.22032194" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22434607" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30181086" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.22535211" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -425,13 +438,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/app.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="15" selection-start-line="15" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/kalkancrypt-0.1.1.jar!/kz/gov/pki/kalkan/jce/provider/X509CertificateObject.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -453,13 +459,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/ets/TheMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="56" column="54" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
+        <state relative-caret-position="1482">
+          <caret line="178" column="31" selection-start-line="178" selection-start-column="31" selection-end-line="178" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/app.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="20" column="23" lean-forward="true" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
         </state>
       </provider>
     </entry>

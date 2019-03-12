@@ -3,3 +3,4 @@ out*
 .idea*
 nb-configuration.xml
 *.iml
+log*

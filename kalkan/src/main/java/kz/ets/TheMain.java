@@ -167,7 +167,7 @@ public class TheMain {
                     String content = new String(Files.readAllBytes(Paths.get(filename)), "UTF-8");
 
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    logger.error("Error: ", e);
                 }
 
                 if (cert != null) {
@@ -176,7 +176,7 @@ public class TheMain {
                 }
             }
         } catch (Exception e) {
-            logger.error("ERROR", e);
+            logger.error("Error", e);
         }
         return result;
     }
