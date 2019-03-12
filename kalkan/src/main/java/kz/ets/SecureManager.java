@@ -111,7 +111,7 @@ public class SecureManager {
             // Почему Error, а не Exception -
             // чтобы поймать например ошибки когда провайдер скомпилированный под яву 1.7 запускаетьс на  яве 1.6
         } catch (Error ex) {
-            logger.error("Не могу загрузить Kalkan провайдер ", ex);
+            logger.error("Can't load Kalkan provider: ", ex);
             kalkanErrorMessage = ex.getMessage();
             canWorkWithKalkan.set(false);
         }
@@ -153,8 +153,8 @@ public class SecureManager {
 
     public boolean isGoodSignature(String signedData, String signature) {
         if (!canWorkWithKalkan.get()) {
-            verifyErrorMsg = "Провайдер 'KalKan' не был загружен. Причина:" + kalkanErrorMessage;
-            logger.error("Провайдер 'KalKan' не был загружен. Причина:" + kalkanErrorMessage);
+            verifyErrorMsg = "Kalkan provider didn't loaded:" + kalkanErrorMessage;
+            logger.error(verifyErrorMsg);
             return false;
         }
         Boolean result = verifyCMSSignature(signature, signedData);
@@ -181,7 +181,7 @@ public class SecureManager {
      * @return
      */
     public Boolean verifyCMSSignature(String sigantureToVerify, String signedData) {
-        verifyErrorMsg = "Ошибка не определена";
+        verifyErrorMsg = "Error is undefined.";
         try {
             CMSSignedData cms = createCMSSignedData(sigantureToVerify, signedData);
             SignerInformationStore signers = cms.getSignerInfos();
@@ -205,7 +205,7 @@ public class SecureManager {
                 } else if (checkNucTwoCertificateType(signers, clientCerts)) {
                     return true;
                 } else {
-                    verifyErrorMsg = "Сертификат(ы) подписавший информацию не был выдан НУЦ РК.";
+                    verifyErrorMsg = "Sign certificate not issued by NCA RK.";
                     logger.error(verifyErrorMsg);
                     return false;
                 }
@@ -262,8 +262,8 @@ public class SecureManager {
             inputStream.close();
             //IOUtils.closeQuietly(fis);
         } catch (Exception ex) {
-            throw new RuntimeException("createCerificateByFile ORE SIGN: Не смог создать сертификат из хранилища '"
-                    + fileName + "' для " + storeDescript + "." + ex.getMessage().toString(), ex);
+            throw new RuntimeException("createCerificateByFile ORE SIGN: Can't create certificate from storage '" + fileName + "' for " + storeDescript
+                    + "." + ex.getMessage().toString(), ex);
         }
 
         List<? extends Certificate> certs = cp.getCertificates();
@@ -271,13 +271,10 @@ public class SecureManager {
             //System.out.println("Создали сертификат " + fileName + " для " + storeDescript);
             return certs.get(0);
         } else {
-            throw new RuntimeException("В хранилище '"
-                    + fileName + "' для " + storeDescript
-                    + " должно быть только 1 сертификат а надено " + certs.size());
+            throw new RuntimeException("In storage '" + fileName + "' for " + storeDescript + " can be onlu one certificate, but found " + certs.size() + ".");
         }
 
     }
-
 
     public String getRespName() {
         return respName;
@@ -352,22 +349,22 @@ public class SecureManager {
                     cert_db.checkValidity();
                     overAllResult = (overAllResult) && (signer.verify(cert_db, providerName));
                 } catch (CertificateExpiredException ex) {
-                    verifyErrorMsg = "Срок действия сертификата которым подписали информацию прошел!";
+                    verifyErrorMsg = "Sign certificate expired.";
                     logger.error("ORE SIGN2: " + verifyErrorMsg, ex);
                     return false;
                 } catch (CertificateNotYetValidException ex) {
-                    verifyErrorMsg = "Сертификат которым подписали информацию уже не действителен!";
+                        verifyErrorMsg = "Sign certificate not valid more.";
                     logger.error("ORE SIGN3: " + verifyErrorMsg, ex);
                     return false;
                 }
             }
             if (indexOfSigner == 0) {
-                verifyErrorMsg = "Есть подпись данных, но не найден сертификат чтобы перепроверить эту подпись!";
+                verifyErrorMsg = "Data is signed, but check certificate not found.";
                 logger.info(verifyErrorMsg);
             }
 
             if (!overAllResult) {
-                verifyErrorMsg = "Перепроверка подписи данных и сертификата дала ошибку!";
+                verifyErrorMsg = "Rechecking the data signature and certificate gave an error.";
                 logger.info(verifyErrorMsg);
             }
         }
@@ -388,7 +385,7 @@ public class SecureManager {
      */
     private boolean isBadBinOrIin(SignerInformationStore signers, CertStore clientCerts) throws CertStoreException {
         if (signers.getSigners().size() == 0) {
-            verifyErrorMsg = "В информации не найдены подписи.";
+            verifyErrorMsg = "No sign in data.";
             logger.info(verifyErrorMsg);
             return true;
         }
@@ -400,7 +397,7 @@ public class SecureManager {
             Iterator certIt = certCollection.iterator();
             //System.out.println(  );
             if (certCollection.size() == 0) {
-                verifyErrorMsg = "В информации не найдены сертификаты которыми подписана информация.";
+                verifyErrorMsg = "No sign certificates in data.";
                 logger.info(verifyErrorMsg);
                 return true;
             }
@@ -416,13 +413,11 @@ public class SecureManager {
                         if (realBinIin.equals(m.group(1))) {
                             return false;
                         } else {
-                            verifyErrorMsg = "Для подписания информации небходимо использовать сертификат с БИН '" + realBinIin
-                                    + "' , а не c БИНом '" + m.group(1) + "'. ";
+                            verifyErrorMsg = "To sign data use certificate with BIN '" + realBinIin + "' , not this '" + m.group(1) + "'. ";
                             logger.info(verifyErrorMsg);
                         }
                     } else {
-                        verifyErrorMsg = "В сертификате подпиcанной информации не найден БИН '" + realBinIin
-                                + "' .";
+                        verifyErrorMsg = "BIN " + realBinIin + " not found in signed data certificate.";
                         logger.info(verifyErrorMsg);
                     }
                 } else {
@@ -432,13 +427,11 @@ public class SecureManager {
                         if (realBinIin.equals(m.group(1))) {
                             return false;
                         } else {
-                            verifyErrorMsg = "Для подписания информации небходимо использовать сертификат с ИИН '" + realBinIin
-                                    + "' , а не c ИИНом '" + m.group(1) + "'. ";
+                            verifyErrorMsg = "To sign data use certificate with BIN '" + realBinIin + "' , not this '" + m.group(1) + "'. ";
                             logger.info(verifyErrorMsg);
                         }
                     } else {
-                        verifyErrorMsg = "В сертификате подпиcанной информации не найден ИИН '" + realBinIin
-                                + "' .";
+                        verifyErrorMsg = "BIN " + realBinIin + " not found in signed data certificate.";
                         logger.info(verifyErrorMsg);
                     }
                 }
@@ -457,7 +450,7 @@ public class SecureManager {
      */
     private boolean isBadKeyUsage(SignerInformationStore signers, CertStore clientCerts) throws CertStoreException {
         if (signers.getSigners().size() == 0) {
-            verifyErrorMsg = "В информации не найдены подписи.";
+            verifyErrorMsg = "No signs in data.";
             logger.info(verifyErrorMsg);
             return true;
         }
@@ -468,7 +461,7 @@ public class SecureManager {
             Collection certCollection = clientCerts.getCertificates(signerConstraints);
             Iterator certIt = certCollection.iterator();
             if (certCollection.size() == 0) {
-                verifyErrorMsg = "В информации не найдены сертификаты которыми подписана информация.";
+                verifyErrorMsg = "No certificates in signed data.";
                 logger.info(verifyErrorMsg);
                 return true;
             }
@@ -489,7 +482,7 @@ public class SecureManager {
                 if (cert.getKeyUsage()[0] && cert.getKeyUsage()[1]) {
                     continue;
                 } else {
-                    verifyErrorMsg = "Для продписания информации необходимо использовать сертификат c ключем 'Неотрекаемость'.";
+                    verifyErrorMsg = "To sign must use certificate with key 'Non repudiation'.";
                     logger.info(verifyErrorMsg);
                     return false;
                 }
@@ -516,7 +509,7 @@ public class SecureManager {
             Collection certCollection = clientCerts.getCertificates(signerConstraints);
             Iterator certIt = certCollection.iterator();
             if (certCollection.size() == 0) {
-                throw new RuntimeException("В информации не найдены сертификаты которыми подписана информация.");
+                throw new RuntimeException("No certificates in signed data.");
             }
             while (certIt.hasNext()) {
                 X509Certificate userCert = (X509Certificate) certIt.next();
@@ -543,15 +536,15 @@ public class SecureManager {
                     try {
                         certForCheck.checkValidity(); // проверяем валидность сертификата
                     } catch (CertificateExpiredException ex) {
-                        throw new RuntimeException("Информация подписана сертификатом НУЦ 1.0, но корневым сертификатом НУЦ 1.0 уже нельзя пользоваться");
+                        throw new RuntimeException("Data signed with certificate NCA 1.0, but root certificate is deprecated.");
                     } catch (CertificateNotYetValidException ex) {
-                        throw new RuntimeException("Информация подписана сертификатом НУЦ 1.0, но корневой сертификат НУЦ 1.0 уже не действителен.");
+                        throw new RuntimeException("Data signed with certificate NCA 1.0, but root certificate is not valid more.");
                     }
                     try {
                         if (isNotRevokedCertNucOne(userCert)) {  // проверяем отозваность сертификата
                             return true;
                         } else {
-                            throw new RuntimeException("Cертификат подписавший информацию был отозван.");
+                            throw new RuntimeException("Sign certificate is recalled.");
                         }
                     } catch (Exception ex) {
                         throw new RuntimeException(ex.getMessage());
@@ -581,7 +574,7 @@ public class SecureManager {
             Iterator certIt = certCollection.iterator();
             //System.out.println(  );
             if (certCollection.size() == 0) {
-                throw new RuntimeException("В информации не найдены сертификаты которыми подписана информация.");
+                throw new RuntimeException("No certificates in signed data.");
             }
             while (certIt.hasNext()) {
                 X509Certificate userCert = (X509Certificate) certIt.next();
@@ -611,9 +604,9 @@ public class SecureManager {
                     try {
                         certForCheck.checkValidity();
                     } catch (CertificateExpiredException ex) {
-                        throw new RuntimeException("Информация подписана сертификатом НУЦ 2.0, но корневым сертификатом НУЦ 2.0 уже нельзя пользоваться");
+                        throw new RuntimeException("Data signed with certificate NCA 2.0, but root certificate is deprecated.");
                     } catch (CertificateNotYetValidException ex) {
-                        throw new RuntimeException("Информация подписана сертификатом НУЦ 2.0, но корневой сертификат НУЦ 2.0 уже не действителен.");
+                        throw new RuntimeException("Data signed with certificate NCA 2.0, but root certificate is not valid more.");
                     }
 
                     try {
@@ -621,13 +614,12 @@ public class SecureManager {
                             result = true;
                             return true;
                         } else {
-                            throw new RuntimeException("Cертификат подписавший информацию был отозван.");
+                            throw new RuntimeException("Sign certificate is recalled.");
                         }
                     } catch (Exception ex) {
                         throw new RuntimeException(ex.getMessage());
                     }
                 }
-
             }
         }
         return result;
@@ -704,7 +696,7 @@ public class SecureManager {
                 return CRL_RSA_2;
             }
         } else {
-            throw new RuntimeException("Не найдена Проверка отозвоности для " + currentRespType.toString() + " и версий  PKI SDK =" + versionPkiSdk);
+            throw new RuntimeException("Recall check not found for " + currentRespType.toString() + " and version PKI SDK =" + versionPkiSdk);
         }
     }
 
@@ -729,7 +721,7 @@ public class SecureManager {
                 return false;
             }
         } else {
-            throw new RuntimeException("Условия для состояния не определены " + MAP_OF_LOAD_CRL_LABEL.get(crlName));
+            throw new RuntimeException("Conditions for status not defined " + MAP_OF_LOAD_CRL_LABEL.get(crlName));
         }
     }
 
@@ -785,7 +777,7 @@ public class SecureManager {
 	                log.warning(msg);
 	            } */
         } catch (Exception e) {
-            logger.error("Ошибка(1) получения CRL-файла : '", e);
+            logger.error("Error (1) getting CRL-file : '", e);
         }
         //MAP_OF_LOAD_CRL_LABEL.put(crlName, oldState ) ;
         MAP_OF_LOAD_CRL_TIME.put(crlName, new Date());
@@ -808,7 +800,7 @@ public class SecureManager {
         }
         Object result = MAP_OF_XCRL.get(crlName);
         if (result.equals(NO_OBJECT)) {
-            logger.warn("Не найдена проверка отозванности для " + crlName);
+            logger.warn("Recall check not found for " + crlName);
             return null;
         }
         return (X509CRL) result;

@@ -1,5 +1,6 @@
 package kz.ets;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import kz.gov.pki.kalkan.util.encoders.Base64;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -31,24 +32,24 @@ public class TheMain {
 
     public static void main(String[] args) {
 
-        boolean mode = false; //true - продуктивный режим
+        boolean mode = Boolean.valueOf(props.getProperty("PROD"));
         String login = null;
         String PlainData = null;
         String signedPlainData = null;
         //String msg_id = null;
 
         //System.out.println("args[1]: " + args[1] + " :args[1]." );
+        logger.info("Production mode is " + mode);
         if (mode) {
             login = args[0];
-
             byte[] valueDecoded = null;
             try {
                 valueDecoded = Base64.decode(args[1].getBytes());
                 PlainData = new String(valueDecoded);
             } catch (Exception e) {
-                System.out.println(e.getMessage().toString());
+                logger.error("Error", e);
+                return;
             }
-
             //PlainData = args[1];
             signedPlainData = args[2];
         } else {
@@ -69,7 +70,7 @@ public class TheMain {
 
         Boolean b = sm.isGoodSignature(PlainData, signedPlainData);
         sm.DbSaveCertInfo(login, PlainData, signedPlainData, sm.certinfo, b);
-        logger.info("Результат проверки - " + b);
+        logger.info("Check result is " + b);
         /*
 		Provider kalkanProvider = new KalkanProvider();
         boolean exists = false;

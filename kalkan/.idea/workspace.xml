@@ -2,22 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a3dc362-6ae1-4d67-a47c-f173179808c9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/commons-lang3-3.3.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/commons-logging-1.1.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lib.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mysql-connector-java-5.1.41-bin.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/xmlsec-1.5.8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/ets/SecureManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/ets/SecureManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kz/ets/TheMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/ets/TheMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/app.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/kalkan.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/lib/commons-1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/lib/commons-lang3-3.3.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/lib/hamcrest-core-1.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/lib/junit-4.11.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/lib/kalkan-1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/lib/mysql-1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/lib/xmldsig-1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/lib/xmlsec-1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kz/ets/PropsManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kz/ets/PropsManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kz/ets/SecureManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kz/ets/SecureManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kz/ets/TheMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kz/ets/TheMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kz/ets/TypeOfCrlLoaded.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kz/ets/TypeOfCrlLoaded.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kz/ets/TypeOfRespondent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kz/ets/TypeOfRespondent.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -32,8 +33,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/ets/TheMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1482">
-              <caret line="178" column="31" selection-start-line="178" selection-start-column="31" selection-end-line="178" selection-end-column="31" />
+            <state relative-caret-position="402">
+              <caret line="167" column="52" selection-start-line="167" selection-start-column="52" selection-end-line="167" selection-end-column="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/kz/ets/SecureManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-6082">
+              <caret line="802" column="52" selection-start-line="802" selection-start-column="52" selection-end-line="802" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -42,26 +55,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/kz/ets/SecureManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="354" column="53" selection-start-line="354" selection-start-column="53" selection-end-line="354" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#44247#44248#0" expanded="true" />
-                <element signature="e#44280#44281#0" expanded="true" />
-                <element signature="e#44308#44309#0" expanded="true" />
-                <element signature="e#44335#44336#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/app.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="20" column="23" lean-forward="true" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+            <state relative-caret-position="552">
+              <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -82,9 +79,9 @@
       <find>verifyCMSSignature</find>
       <find>createCMSSignedData</find>
       <find>isGoodSignature</find>
-      <find>отч</find>
       <find>TEST.PERSON_CERT</find>
       <find>DEFAUL_CERT_NUC2_GOST_PATH</find>
+      <find>отч</find>
     </findStrings>
     <replaceStrings>
       <replace>system</replace>
@@ -97,12 +94,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/resources/config.properties" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/kz/ets/PropsManager.java" />
         <option value="$PROJECT_DIR$/src/main/resources/log4j.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/ets/SecureManager.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/resources/app.properties" />
         <option value="$PROJECT_DIR$/src/main/java/kz/ets/TheMain.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/ets/SecureManager.java" />
       </list>
     </option>
   </component>
@@ -219,10 +217,6 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="crl" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="kalkan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -237,7 +231,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.151875" />
     <property name="project.structure.side.proportion" value="0.28308824" />
     <property name="settings.editor.selected.configurable" value="configurable.group.language" />
@@ -330,12 +324,14 @@
       <option name="presentableId" value="Default" />
       <updated>1552300591368</updated>
       <workItem from="1552300594262" duration="6912000" />
-      <workItem from="1552358693596" duration="6078000" />
+      <workItem from="1552358693596" duration="7035000" />
+      <workItem from="1552367107948" duration="1939000" />
+      <workItem from="1552369110813" duration="1156000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12990000" />
+    <option name="totallyTimeSpent" value="17042000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -350,21 +346,21 @@
     <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14335664" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15534465" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.22032194" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30181086" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.1861167" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.22535211" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32997987" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.1971831" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.21830986" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.36418512" />
@@ -380,23 +376,9 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/kz/ets/SecureManager.java</url>
-          <line>164</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/test/java/kz/ets/AppTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/cert/nca/pki_rsa.cer">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/cert/nca/pki_rsa.cer" />
     <entry file="file://$PROJECT_DIR$/kalkan.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -413,20 +395,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/log/kalkan/kalkan_dbg.log">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="75" column="19" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/kalkan/kalkan_err.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-199">
-          <caret column="69" selection-start-column="51" selection-end-column="69" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/log/kalkan/kalkan_usr.log">
       <provider selected="true" editor-type-id="text-editor" />
@@ -445,37 +413,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/ets/SecureManager.java">
+    <entry file="file://$PROJECT_DIR$/log/kalkan/kalkan_err.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="354" column="53" selection-start-line="354" selection-start-column="53" selection-end-line="354" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#44247#44248#0" expanded="true" />
-            <element signature="e#44280#44281#0" expanded="true" />
-            <element signature="e#44308#44309#0" expanded="true" />
-            <element signature="e#44335#44336#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-2346">
+          <caret column="69" selection-start-column="51" selection-end-column="69" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/ets/TheMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1482">
-          <caret line="178" column="31" selection-start-line="178" selection-start-column="31" selection-end-line="178" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state>
+          <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/app.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="20" column="23" lean-forward="true" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+        <state relative-caret-position="552">
+          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/ets/TheMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="167" column="52" selection-start-line="167" selection-start-column="52" selection-end-line="167" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/ets/SecureManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6082">
+          <caret line="802" column="52" selection-start-line="802" selection-start-column="52" selection-end-line="802" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -511,7 +493,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.28308824" />
               </list>
             </option>
           </splitter-proportions>
@@ -523,7 +505,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.28308824" />
               </list>
             </option>
           </splitter-proportions>
