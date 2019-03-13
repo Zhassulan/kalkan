@@ -19,6 +19,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.*;
+import java.security.Provider;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.util.regex.Matcher;
@@ -26,15 +27,16 @@ import java.util.regex.Pattern;
 
 public class TheMain {
 
-    private final static Charset UTF8_CHARSET = Charset.forName("UTF-8");
+    //private final static Charset UTF8_CHARSET = Charset.forName("UTF-8");
     private static Logger logger = LogManager.getLogger(TheMain.class);
     private static PropsManager props = PropsManager.getInstance();
 
     public static void main(String[] args) {
 
         boolean mode = Boolean.valueOf(props.getProperty("PROD"));
+
         String login = null;
-        String PlainData = null;
+        String plainData = null;
         String signedPlainData = null;
         //String msg_id = null;
 
@@ -45,31 +47,38 @@ public class TheMain {
             byte[] valueDecoded = null;
             try {
                 valueDecoded = Base64.decode(args[1].getBytes());
-                PlainData = new String(valueDecoded);
+                plainData = new String(valueDecoded);
             } catch (Exception e) {
                 logger.error("Error", e);
                 return;
             }
-            //PlainData = args[1];
+            //plainData = args[1];
             signedPlainData = args[2];
         } else {
             login = props.getProperty("TEST.LOGIN");
-            PlainData = props.getProperty("TEST.PLAIN_DATA");
+            plainData = props.getProperty("TEST.PLAIN_DATA");
             signedPlainData = props.getProperty("TEST.SIGNED_PLAIN_DATA");
         }
 
         SecureManager sm = new SecureManager(props.getProperty("TEST.BIN"), "", 1); //2-PERSON, 1 - FIRM
+        Provider provider = sm.getProvider();
 
-        //sm.log.info("Plain data: " + PlainData + " :Plain data.");
+        //sm.log.info("Plain data: " + plainData + " :Plain data.");
         //sm.log.info("Signed data: " + signedPlainData + " :Signed data.");
 
         sm.SetBrokerCode(login);
-        //PlainData = sm.GetMsgFromDb(msg_id);
+        //plainData = sm.GetMsgFromDb(msg_id);
         //sm.ReadDb();
         //ShowCertContent(sm.GetCertFromDb("EVTB"));
 
-        Boolean b = sm.isGoodSignature(PlainData, signedPlainData);
-        sm.DbSaveCertInfo(login, PlainData, signedPlainData, sm.certinfo, b);
+        //Boolean b = sm.isGoodSignature(plainData, signedPlainData);
+        logger.info("Broker login: " + login);
+        logger.info("Plain data: " + plainData);
+        logger.info("Checking decoded plain data: " + new String(Base64.decode(plainData.getBytes())));
+        logger.info("Checking signed data: " + signedPlainData);
+        logger.info("Provider name: " + provider.getName());
+        Boolean b = sm.verifyCMSSignatureNew(Base64.decode(signedPlainData.getBytes()), Base64.decode(plainData.getBytes()), provider);
+        sm.DbSaveCertInfo(login, plainData, signedPlainData, sm.certinfo, b);
         logger.info("Check result is " + b);
         /*
 		Provider kalkanProvider = new KalkanProvider();
@@ -181,4 +190,5 @@ public class TheMain {
         }
         return result;
     }
+
 }

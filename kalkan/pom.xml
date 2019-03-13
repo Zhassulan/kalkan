@@ -28,21 +28,33 @@
         </dependency>
 
         <!-- first install to local maven repo
-        mvn install:install-file -Dfile=kalkancrypt-0.1.1.jar -DgroupId=kz.gov.pki.kalkan -DartifactId=kalkan -Dversion=1.0 -Dpackaging=JAR
+        SDK 2
+        mvn install:install-file -Dfile=kalkancrypt-0.5.jar -DgroupId=kz.gov.pki.kalkan -DartifactId=kalkan -Dversion=0.5 -Dpackaging=JAR
         -->
         <dependency>
             <groupId>kz.gov.pki.kalkan</groupId>
             <artifactId>kalkan</artifactId>
-            <version>1.0</version>
+            <version>0.5</version>
         </dependency>
 
         <!-- first install to local maven repo
-        mvn install:install-file -Dfile=kalkancrypt_xmldsig-0.2.jar -DgroupId=kz.gov.pki.kalkan.xmldsig -DartifactId=xmldsig -Dversion=1.0 -Dpackaging=JAR
+        SDK 2
+        mvn install:install-file -Dfile=kalkancrypt_xmldsig-0.3.jar -DgroupId=kz.gov.pki.kalkan.xmldsig -DartifactId=xmldsig -Dversion=0.3 -Dpackaging=JAR
         -->
         <dependency>
             <groupId>kz.gov.pki.kalkan.xmldsig</groupId>
             <artifactId>xmldsig</artifactId>
-            <version>1.0</version>
+            <version>0.3</version>
+        </dependency>
+
+        <!-- first install to local maven repo
+        SDK 2
+        mvn install:install-file -Dfile=knca_provider_util-0.7.1.jar -DgroupId=kz.gov.pki.provider.knca_provider_util -DartifactId=knca_provider_util -Dversion=0.7.1 -Dpackaging=JAR
+        -->
+        <dependency>
+            <groupId>kz.gov.pki.provider.knca_provider_util</groupId>
+            <artifactId>knca_provider_util</artifactId>
+            <version>0.7.1</version>
         </dependency>
 
         <dependency>

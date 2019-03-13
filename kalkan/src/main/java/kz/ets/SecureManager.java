@@ -6,6 +6,8 @@ import kz.gov.pki.kalkan.asn1.DEROctetString;
 import kz.gov.pki.kalkan.jce.provider.KalkanProvider;
 import kz.gov.pki.kalkan.jce.provider.cms.*;
 import kz.gov.pki.kalkan.util.encoders.Base64;
+import kz.gov.pki.provider.exception.ProviderUtilException;
+import kz.gov.pki.provider.utils.CMSUtil;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -1081,30 +1083,38 @@ public class SecureManager {
         return cert;
     }
 
-}
-
-enum TypeOfRespondent {
-    FIRM(1), PERSON(2);
-    private final int code;
-
-    TypeOfRespondent(int aCode) {
-        this.code = aCode;
+    public Boolean verifyCMSSignatureNew(byte [] signedData, byte [] data, Provider provider) {
+        CMSUtil cmsUtil = new CMSUtil();
+        try {
+            cmsUtil.verifyCMS(signedData, data, provider);
+            logger.info("CMS signed data is verified.");
+            return true;
+        } catch (ProviderUtilException e) {
+            logger.error("CMS signed data verify error: ", e);
+        }
+        return false;
     }
 
-    public int getCode() {
-        return code;
-    }
-
-    public static TypeOfRespondent findByCode(int seekCode) {
-        for (TypeOfRespondent seekType : TypeOfRespondent.values()) {
-            if (seekType.getCode() == seekCode) {
-                return seekType;
+    public Provider getProvider()   {
+        // Инициализация провайдера
+        Provider kalkanProvider = new KalkanProvider();
+        //Добавление провайдера в java.security.Security
+        boolean exists = false;
+        Provider[] providers = Security.getProviders();
+        for (Provider p : providers) {
+            if (p.getName().equals(kalkanProvider.getName())) {
+                exists = true;
             }
         }
-        return null;
+        if (!exists) {
+            Security.addProvider(kalkanProvider);
+        }
+        // Для дальнейшего использования наименования провайдера определяется
+        //1
+        //String providerName = kalkanProvider.getName();
+        //2 или
+        //providerName = KalkanProvider.PROVIDER_NAME;
+        return kalkanProvider;
     }
-}
 
-enum TypeOfCrlLoaded {
-    NO_LOAD, LOADING, LOADED
 }
