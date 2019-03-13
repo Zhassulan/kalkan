@@ -32,40 +32,30 @@ public class TheMain {
     private static PropsManager props = PropsManager.getInstance();
 
     public static void main(String[] args) {
-
         boolean mode = Boolean.valueOf(props.getProperty("PROD"));
-
+        boolean result = false;
         String login = null;
         String plainData = null;
         String signedPlainData = null;
-        //String msg_id = null;
-
-        //System.out.println("args[1]: " + args[1] + " :args[1]." );
         logger.info("Production mode is " + mode);
         if (mode) {
-            login = args[0];
-            byte[] valueDecoded = null;
             try {
-                valueDecoded = Base64.decode(args[1].getBytes());
-                plainData = new String(valueDecoded);
-            } catch (Exception e) {
-                logger.error("Error", e);
+                login = args[0];
+                plainData = args[1];
+                signedPlainData = args[2];
+                logger.info("JAR arguments: args[1] = " + args[1] + ", args[1] = " + args[1] + ", args[2] = " + args[2]);
+            } catch (Exception e)   {
+                logger.error("Error: ", e);
+                logger.info("Check result is " + result);
                 return;
             }
-            //plainData = args[1];
-            signedPlainData = args[2];
         } else {
             login = props.getProperty("TEST.LOGIN");
             plainData = props.getProperty("TEST.PLAIN_DATA");
             signedPlainData = props.getProperty("TEST.SIGNED_PLAIN_DATA");
         }
-
         SecureManager sm = new SecureManager(props.getProperty("TEST.BIN"), "", 1); //2-PERSON, 1 - FIRM
         Provider provider = sm.getProvider();
-
-        //sm.log.info("Plain data: " + plainData + " :Plain data.");
-        //sm.log.info("Signed data: " + signedPlainData + " :Signed data.");
-
         sm.SetBrokerCode(login);
         //plainData = sm.GetMsgFromDb(msg_id);
         //sm.ReadDb();
@@ -77,9 +67,9 @@ public class TheMain {
         logger.info("Checking decoded plain data: " + new String(Base64.decode(plainData.getBytes())));
         logger.info("Checking signed data: " + signedPlainData);
         logger.info("Provider name: " + provider.getName());
-        Boolean b = sm.verifyCMSSignatureNew(Base64.decode(signedPlainData.getBytes()), Base64.decode(plainData.getBytes()), provider);
-        sm.DbSaveCertInfo(login, plainData, signedPlainData, sm.certinfo, b);
-        logger.info("Check result is " + b);
+        result = sm.verifyCMSSignatureNew(Base64.decode(signedPlainData.getBytes()), Base64.decode(plainData.getBytes()), provider);
+        sm.DbSaveCertInfo(login, plainData, signedPlainData, sm.certinfo, result);
+        logger.info("Check result is " + result);
         /*
 		Provider kalkanProvider = new KalkanProvider();
         boolean exists = false;
