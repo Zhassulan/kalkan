@@ -8,6 +8,7 @@ import kz.gov.pki.kalkan.jce.provider.cms.*;
 import kz.gov.pki.kalkan.util.encoders.Base64;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
@@ -28,7 +29,7 @@ import java.util.regex.Pattern;
 public class SecureManager {
 
     private static PropsManager props = PropsManager.getInstance();
-    private static org.apache.log4j.Logger logger = LogManager.getLogger(SecureManager.class);
+    private static Logger logger = LogManager.getLogger(SecureManager.class);
 
     //final static Logger log = Logger.getLogger(SecureManager.class.getName());
     final static Map<String, TypeOfCrlLoaded> MAP_OF_LOAD_CRL_LABEL; //
