@@ -4,7 +4,7 @@
 <log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
 
     <appender name="ap_usr" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="File" value="log/kalkan/kalkan_usr.log"/>
+        <param name="File" value="./log/kalkan/kalkan_usr.log"/>
         <param name="DatePattern" value="yyyy-MM-dd-HH'.log'"/>
         <param name="Append" value="true"/>
 
@@ -41,7 +41,7 @@
     </appender>
 
     <appender name="ap_dbg" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="File" value="log/kalkan/kalkan_dbg.log"/>
+        <param name="File" value="./log/kalkan/kalkan_dbg.log"/>
         <param name="DatePattern" value="yyyy-MM-dd-HH'.log'"/>
         <param name="Append" value="true"/>
 
@@ -73,7 +73,7 @@
     </appender>
 
     <appender name="ap_err" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="File" value="log/kalkan/kalkan_err.log"/>
+        <param name="File" value="./log/kalkan/kalkan_err.log"/>
         <param name="DatePattern" value="yyyy-MM-dd'.log'"/>
         <param name="Append" value="true"/>
 
